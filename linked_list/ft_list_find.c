@@ -11,14 +11,12 @@ t_env *ft_list_find(t_env *begin_list, void *data_ref, char x, int (*cmp)())
         return (NULL);
     while (tmp)
     {
-        // printf("index %d -----> %s\n", i, (char *)tmp->name);
         if (x == 'n')
             target = tmp->name;
         else if (x == 'v')
             target = tmp->value;
         if ((*((int (*)(void *, void *))cmp))(target, data_ref) == 0)
         {
-            printf("index %d -----> %s\n", i, (char *)target);
             return (tmp);
         }
         i++;
