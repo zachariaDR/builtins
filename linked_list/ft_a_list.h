@@ -11,7 +11,6 @@ typedef struct	s_env
 	char			*name;
 	char			*value;
 	struct 	s_env	*next;
-	// struct 	s_env	*prev;
 }				t_env;
 
 t_env 	*ft_create_elem(char *name, char *value);
