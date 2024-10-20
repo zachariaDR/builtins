@@ -1,6 +1,5 @@
 #include "../builtins.h"
 
-
 void    ft_env(char **arg)
 {
     (void)arg;
