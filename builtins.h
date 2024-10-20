@@ -6,7 +6,7 @@
 /*   By: zadriouc@student.1337.ma <zadriouc>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:16:59 by zadriouc          #+#    #+#             */
-/*   Updated: 2024/10/20 11:58:26 by zadriouc@st      ###   ########.fr       */
+/*   Updated: 2024/10/20 18:36:16 by zadriouc@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/errno.h>
 # include <limits.h>
 
-# include "lili/ft_a_list.h"
+# include "linked_list/ft_a_list.h"
 
 # define PATH_MAXO 4096
 
