@@ -43,18 +43,8 @@ void    ft_list_clear(t_env **begin_list, void (*free_fct)(void *));
 void    ft_list_del_last(t_env **begin_list, void (*free_fct)(void *));
 void    ft_list_del_first(t_env **begin_list, void (*free_fct)(void *));
 void    ft_list_del_nth(t_env **begin_list, void *data, void (*free_fct)(void *));
-void    ft_list_remove_if(t_env **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
 
-//------- manipulation functions ------
-void    ft_list_reverse(t_env *begin_list);
-void    ft_list_reverse_fun(t_env **begin_list);
-void    ft_list_foreach(t_env *begin_list, void (*f)(void *));
-void    ft_list_foreach_if(t_env *begin_list, void (*f)(void *), void *data_ref, int (*cmp)(void *, void *));
-void    ft_list_merge(t_env **begin_list1, t_env *begin_list2);
-void    ft_list_sort(t_env **begin_list, int (*cmp)());
-t_env	*ft_list_map(t_env *lst, void *(*f)(void *), void (*del)(void *));
-void    ft_sorted_list_insert(t_env **begin_list, void *data, int (*cmp)());
-void    ft_sorted_list_merge(t_env **begin_list1, t_env *begin_list2, int (*cmp)());
+
 
 void    ft_print_list(t_env **list);
 int     list_is_empty(t_env **list);
