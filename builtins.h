@@ -6,7 +6,7 @@
 /*   By: zadriouc@student.1337.ma <zadriouc>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:16:59 by zadriouc          #+#    #+#             */
-/*   Updated: 2024/10/20 19:42:43 by zadriouc@st      ###   ########.fr       */
+/*   Updated: 2024/10/21 01:37:49 by zadriouc@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,37 +25,7 @@
 
 # define PATH_MAXO 4096
 
-// typedef struct	s_env
-// {
-// 	char			*name;
-// 	char			*value;
-// 	struct 	s_env	*next;
-// 	struct 	s_env	*prev;
-// }				t_env;
-
-// typedef struct s_list
-// {
-// 	char			*data;
-// 	struct s_list 	*next;
-// }				t_list;
-
-typedef struct s_bi
-{
-	char	*name;
-	void	(*func)(char **);
-}				t_bi;
-
-typedef struct s_exec
-{
-	t_bi	bi[7];
-	t_env 	*env;
-}				t_exec;
-
-
 extern t_env	*g_env;
-
-// extern char	**g_env;
-// t_exec	g_exec;
 
 
 void    ft_putstr_fd(const char *str, int fd);

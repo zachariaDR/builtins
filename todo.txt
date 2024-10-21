@@ -1,0 +1,15 @@
+typedef struct	s_env
+{
+	char			*name;
+	char			*value;
+	struct 	s_env	*next;
+}	t_env;
+
+for the envirement memberes 
+
+for example : PWD=/home/zacharia
+
+t_env env;
+
+env.name  --> "PWD"
+env.value --> "=/home/zacharia"
