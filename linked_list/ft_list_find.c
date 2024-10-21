@@ -1,6 +1,6 @@
 #include "ft_a_list.h"
 
-t_env *ft_list_find(t_env *begin_list, void *data_ref, char x, int (*cmp)())
+t_env *ft_list_find(t_env *begin_list, void *data_ref, char x)
 {
     t_env   *tmp;
     char    *target;
@@ -15,7 +15,7 @@ t_env *ft_list_find(t_env *begin_list, void *data_ref, char x, int (*cmp)())
             target = tmp->name;
         else if (x == 'v')
             target = tmp->value;
-        if ((*((int (*)(void *, void *))cmp))(target, data_ref) == 0)
+        if (strcmp(target, data_ref) == 0)
         {
             return (tmp);
         }

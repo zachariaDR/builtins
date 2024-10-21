@@ -6,11 +6,11 @@
 /*   By: zadriouc@student.1337.ma <zadriouc>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:24:00 by zadriouc          #+#    #+#             */
-/*   Updated: 2024/10/16 18:31:38 by zadriouc@st      ###   ########.fr       */
+/*   Updated: 2024/10/21 01:24:11 by zadriouc@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
 int	ft_isdigit(int c)
 {

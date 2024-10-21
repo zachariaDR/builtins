@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-// #include <strings.h>
 
 typedef struct	s_env
 {
@@ -20,13 +19,12 @@ void    ft_list_push_back(t_env **begin_list, char *name, char *value);
 
 //-------- get functinos -----------
 t_env 	*ft_list_last(t_env *begin_list);
-t_env 	*ft_list_find(t_env *begin_list, void *data_ref, char x, int (*cmp)());
-char	*ft_list_get_name(t_env *begin_list, char *name, int (*cmp)());
-char	*ft_list_get_value(t_env *begin_list, char *value, int (*cmp)());
+t_env 	*ft_list_find(t_env *begin_list, void *data_ref, char x);
+char	*ft_list_get_value(t_env *begin_list, char *name);
 int 	ft_list_size(t_env *begin_list);
 
 //-------- set functions ----------
-void    ft_list_set_value(t_env *begin_list, char *name, char *n_value, int (*cmp)());
+void    ft_list_set_value(t_env *begin_list, char *name, char *n_value);
 
 //-------- remove functions --------
 void	ft_list_clear(t_env **lst, void (*del)(void *));

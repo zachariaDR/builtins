@@ -79,7 +79,7 @@ void	export_var(char **args)
 			if (!name)
                 ft_list_push_back(&g_env, get_env_name(args[i]), get_env_value(args[i]));
 			else
-                ft_list_set_value(&g_env, name, get_env_value(args[i]), strcmp);
+                ft_list_set_value(&g_env, name, get_env_value(args[i]));
 		}
 		i++;
 	}

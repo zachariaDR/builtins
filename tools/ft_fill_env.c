@@ -1,4 +1,4 @@
-#include "builtins.h"
+#include "../builtins.h"
 
 char    *get_env_name(char *env_var)
 {
@@ -51,15 +51,3 @@ t_env   *ft_fill_env(char **env)
 
     return (new_env);
 }
-
-// int main(int ac, char **av, char **env)
-// {
-//     t_env *list;
-
-//     list = ft_fill_env(env);
-//     ft_print_list(&list);
-
-
-
-//     return (0);
-// }

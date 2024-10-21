@@ -1,16 +1,14 @@
 #include "ft_a_list.h"
 
-
 t_env *ft_create_elem(char *data, char *value)
 {
-	t_env *new;
+	t_env *n_new;
 
-    
-    new = (t_env *)malloc(sizeof(t_env));
-    if (!new)
+    n_new = (t_env *)malloc(sizeof(t_env));
+    if (!n_new)
         return (NULL);
-    new->name = data;
-    new->value = value;
-    new->next = NULL;
-    return (new);	
+    n_new->name = data;
+    n_new->value = value;
+    n_new->next = NULL;
+    return (n_new);	
 }

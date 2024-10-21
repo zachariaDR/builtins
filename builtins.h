@@ -6,7 +6,7 @@
 /*   By: zadriouc@student.1337.ma <zadriouc>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:16:59 by zadriouc          #+#    #+#             */
-/*   Updated: 2024/10/20 18:36:16 by zadriouc@st      ###   ########.fr       */
+/*   Updated: 2024/10/20 19:42:43 by zadriouc@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, char *s2, size_t n);
 void    ft_putstr_fd(const char *str, int fd);
+char	*ft_strcjoin(char *s1, char c);
 
 
 int     ft_matlen(char **mat);
