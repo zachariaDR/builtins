@@ -6,7 +6,7 @@
 /*   By: zadriouc@student.1337.ma <zadriouc>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:16:59 by zadriouc          #+#    #+#             */
-/*   Updated: 2024/10/21 01:37:49 by zadriouc@st      ###   ########.fr       */
+/*   Updated: 2024/10/21 18:32:31 by zadriouc@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int		ft_isalnum(int i);
 int		ft_isalpha(int i);
 int		ft_isdigit(int i);
 void	ft_putendl_fd(char *s, int fd);
-char	*ft_strchr(const char *s, int i);
-char	*ft_strjoin(char const *s1, char const *s2);
-int		ft_strlen(const char *str);
-int		ft_strncmp(const char *s1, char *s2, size_t n);
+// char	*ft_strchr(const char *s, int i);
+char	*ft_strjoin(char *s1, char *s2);
+// int		ft_strlen(const char *str);
+// int		strncmp(const char *s1, char *s2, size_t n);
 void    ft_putstr_fd(const char *str, int fd);
 char	*ft_strcjoin(char *s1, char c);
 
@@ -49,7 +49,8 @@ char    *get_env_name(char *env_var);
 char    *get_env_value(char *env_var);
 //		builitins
 void    ft_env(char **arg);
-void    ft_unset(char *arg);
+void    ft_unset(char **arg);
+void    ft_export(char **arg);
 
 
 #endif

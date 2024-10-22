@@ -1,4 +1,7 @@
-#include "../builtins.h"
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 char    *get_env_name(char *env_var)
 {
@@ -29,25 +32,20 @@ char    *get_env_value(char *env_var)
             break;
         i++;
     }
-    return (strdup(env_var + i)); 
+    return (strdup(env_var + i + 1));
 }
 
-t_env   *ft_fill_env(char **env)
+int main (void)
 {
-    t_env *new_env;
-    char  *name;
-    char  *value;
-    int  i;
+    char env[] = "ZAKARIA";
+    char *name;
+    char *value;
 
-    new_env = NULL;
-    i = 0;
-    while (env[i])
-    {
-        name = get_env_name(env[i]);
-        value = get_env_value(env[i]);
-        ft_list_push_back(&new_env, name, value);
-        i++;
-    }
-
-    return (new_env);
+    name = NULL;
+    value = NULL;
+    name = get_env_name(env);
+    value = get_env_value(env);
+    if (value != NULL)
+        printf(" %s=%s \n", name, value);
+    return (0);
 }

@@ -1,6 +1,6 @@
 #include "../builtins.h"
 
-void ft_puterror(char *arg)
+static void ft_puterror(char *arg)
 {
     ft_putstr_fd("bash: cd: '", 2);
     ft_putstr_fd(arg, 2);
@@ -34,7 +34,7 @@ void	set_oldpwd(void)
     trav = g_env;
 	while (trav)
 	{
-		if (!ft_strncmp("OLDPWD", trav->name, 6) && trav->value[0] == '=')
+		if (!strncmp("OLDPWD", trav->name, 6) && trav->value[0] == '=')
 		{
 			free(trav->value);
             trav->value = ft_strcjoin(cwd, '=');
@@ -56,7 +56,7 @@ void	set_pwd(void)
     trav = g_env;
 	while (trav)
 	{
-		if (!ft_strncmp("PWD", trav->name, 6) && trav->value[0] == '=')
+		if (!strncmp("PWD", trav->name, 6) && trav->value[0] == '=')
 		{
 			free(trav->value);
             trav->value = ft_strcjoin(cwd, '=');
@@ -73,7 +73,7 @@ int	check_home(void)
     trav = g_env;
 	while (trav)
 	{
-		if (!ft_strncmp("HOME", trav->name, 4))
+		if (!strncmp("HOME", trav->name, 4))
 			if (trav->value[0] == '=' || !trav->name[0])
 				return (1);
 		trav = trav->next;
@@ -101,7 +101,7 @@ void	cd_oldpwd(void)
 {
 	char	*path;
 
-    path = ft_list_get_value(&g_env, "OLDPWD") + 1;
+    path = ft_list_get_value(g_env, "OLDPWD") + 1;
 	if (!path)
         ft_puterror("OLDPWD");
 	else
@@ -118,7 +118,8 @@ void	cd_home(void)
 	else
 	{
 		set_oldpwd();
-        path = ft_list_get_value(&g_env, "HOME") + 1;
+        path = ft_list_get_value(g_env, "HOME");
+		// path++; 									fix the issue of the missing '=' in value node 
 		i = chdir(path);
 		if (i)
 		{
@@ -140,7 +141,7 @@ void	re_cd(char **args)
 		cd_home();
 	else if (!strcmp(args[1], "-"))
 		cd_oldpwd();
-	else if (trcmp(args[1], "."))
+	else if (strcmp(args[1], "."))
 	{
 		set_oldpwd();
 		i = chdir(args[1]);

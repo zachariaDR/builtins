@@ -13,3 +13,31 @@ t_env env;
 
 env.name  --> "PWD"
 env.value --> "=/home/zacharia"
+
+
+---------------
+export : cases
+> export ZAKARIA=2003 ZAKARIA  (it should not overwrite ZAKARIA value to NULL) : done
+> export ZAKARIA += "something"
+
+++
+**+=**
+
+
+to fix : the '=' between name and value (when whant to add += impelmention)
+---------------
+
+
+hdhsd = mcmxc
+jjdfd += jkds
+
+
+hack+=
+
+
+--------------- MODIFY THE ENTIRE CODE OF ENV FOR VALUE MEMEMBER AND FIX THE ENTIRE EXPORT for the case of += ------------
+
+
+export ZAKARIA=2001 --> value = 2001
+export ZAKARIA=     --> value = \0
+export ZAKARIA		--> value = NULL

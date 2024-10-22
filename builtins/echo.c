@@ -43,8 +43,8 @@ void    echo(int ac, char **av)
     exit(EXIT_SUCCESS);
 }
 
-int main(int ac, char **av)
-{
-    echo (ac, av);
-    return (0);
-}
+// int main(int ac, char **av)
+// {
+//     echo (ac, av);
+//     return (0);
+// }

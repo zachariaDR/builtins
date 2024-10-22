@@ -1,13 +1,13 @@
 #include "../builtins.h"
 
-void ft_puterror(char *arg)
+static void ft_puterror(char *arg)
 {
     ft_putstr_fd("bash: unset: '", 2);
     ft_putstr_fd(arg, 2);
     ft_putstr_fd("': not a valid identifier\n", 2);
 }
 
-int valid_char(char c)
+static int valid_char(char c)
 {
     return (c && ((c >= 'a' && c <= 'z')
 			|| (c >= 'A' && c <= 'Z')
@@ -22,7 +22,7 @@ int	validate(char *str)
 	i = 0;
 	while (valid_char(str[i]))
 		i++;
-	if (i != ft_strlen(str))
+	if (i != strlen(str))
 		return (0);
 	return (1);
 }

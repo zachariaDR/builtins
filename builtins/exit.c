@@ -1,6 +1,6 @@
 #include "../builtins.h"
 
-void ft_puterror(char *arg)
+static void ft_puterror(char *arg)
 {
     ft_putstr_fd("bash: exit: ", 2);
     ft_putstr_fd(arg, 2);
@@ -40,7 +40,7 @@ void bash_exit(int ac, char **av)
     }
 }
 
-int main(int ac, char **av)
-{
-    bash_exit(ac, av);
-}
+// int main(int ac, char **av)
+// {
+//     bash_exit(ac, av);
+// }
