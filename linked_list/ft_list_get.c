@@ -1,6 +1,6 @@
 #include "ft_a_list.h"
 
-t_env *ft_list_find(t_env *begin_list, void *data_ref, char x)
+t_env *ft_list_get(t_env *begin_list, void *data_ref, char x)
 {
     t_env   *tmp;
     char    *target;

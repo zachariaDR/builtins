@@ -21,7 +21,7 @@ int ft_is_numeric(char *str)
     return (1);
 }
 
-void bash_exit(int ac, char **av)
+void ft_exit(int ac, char **av)
 {
     ft_putstr_fd("exit\n", 1);
     if (ac == 1)
@@ -42,5 +42,5 @@ void bash_exit(int ac, char **av)
 
 // int main(int ac, char **av)
 // {
-//     bash_exit(ac, av);
+//     ft_exit(ac, av);
 // }

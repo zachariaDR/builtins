@@ -19,7 +19,7 @@ void    ft_list_push_back(t_env **begin_list, char *name, char *value);
 
 //-------- get functinos -----------
 t_env 	*ft_list_last(t_env *begin_list);
-t_env 	*ft_list_find(t_env *begin_list, void *data_ref, char x);
+t_env 	*ft_list_get(t_env *begin_list, void *data_ref, char x);
 char	*ft_list_get_value(t_env *begin_list, char *name);
 int 	ft_list_size(t_env *begin_list);
 
@@ -30,7 +30,7 @@ void    ft_list_set_value(t_env *begin_list, char *name, char *n_value);
 void	ft_list_clear(t_env **lst, void (*del)(void *));
 void    ft_list_del_last(t_env **begin_list, void (*free_fct)(void *));
 void    ft_list_del_first(t_env **begin_list, void (*free_fct)(void *));
-void    ft_list_del_nth(t_env **begin_list, void *data, void (*free_fct)(void *));
+void    ft_list_del(t_env **begin_list, void *data, void (*free_fct)(void *));
 
 
 void    ft_print_list(t_env **list);

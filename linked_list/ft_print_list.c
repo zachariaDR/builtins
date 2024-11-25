@@ -12,7 +12,7 @@ void    ft_print_list(t_env **list)
     while (llist)
     {
         printf("node %d --> %s", i, (char *)(llist)->name);
-        printf("%s\n", (char *)(llist)->value);
+        printf("=%s\n", (char *)(llist)->value);
         llist = (llist)->next;
         i++;
     }

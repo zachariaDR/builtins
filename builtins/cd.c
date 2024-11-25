@@ -34,16 +34,15 @@ void	set_oldpwd(void)
     trav = g_env;
 	while (trav)
 	{
-		if (!strncmp("OLDPWD", trav->name, 6) && trav->value[0] == '=')
+		if (!strncmp("OLDPWD", trav->name, 6))
 		{
 			free(trav->value);
-            trav->value = ft_strcjoin(cwd, '=');
+            trav->value = strdup(cwd);
 		}
 		trav = trav->next;
 	}
 	free(cwd);
 }
-
 
 void	set_pwd(void)
 {
@@ -56,10 +55,10 @@ void	set_pwd(void)
     trav = g_env;
 	while (trav)
 	{
-		if (!strncmp("PWD", trav->name, 6) && trav->value[0] == '=')
+		if (!strncmp("PWD", trav->name, 6))
 		{
 			free(trav->value);
-            trav->value = ft_strcjoin(cwd, '=');
+            trav->value = strdup(cwd);
 		}
 		trav = trav->next;
 	}
@@ -74,7 +73,6 @@ int	check_home(void)
 	while (trav)
 	{
 		if (!strncmp("HOME", trav->name, 4))
-			if (trav->value[0] == '=' || !trav->name[0])
 				return (1);
 		trav = trav->next;
 	}
@@ -101,7 +99,7 @@ void	cd_oldpwd(void)
 {
 	char	*path;
 
-    path = ft_list_get_value(g_env, "OLDPWD") + 1;
+    path = ft_list_get_value(g_env, "OLDPWD");
 	if (!path)
         ft_puterror("OLDPWD");
 	else
@@ -131,7 +129,7 @@ void	cd_home(void)
 	}
 }
 
-void	re_cd(char **args)
+void	ft_cd(char **args)
 {
 	char	*cwd;
 	int		i;

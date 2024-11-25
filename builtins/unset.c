@@ -37,7 +37,7 @@ void	ft_unset(char **args)
 		if (!validate(args[i]))
             ft_puterror(args[i]);
 		else
-            ft_list_del_nth(&g_env, args[i],free);
+            ft_list_del(&g_env, args[i], free);
 		i++;
 	}
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear_bonus.c                              :+:      :+:    :+:   */
+/*   ft_list_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zadriouc@student.1337.ma <zadriouc>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:13:41 by zadriouc          #+#    #+#             */
-/*   Updated: 2024/09/25 15:07:41 by zadriouc@st      ###   ########.fr       */
+/*   Updated: 2024/10/24 02:17:23 by zadriouc@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_a_list.h"
 
-void	ft_list_clear_bonus(t_env **lst, void (*del)(void *))
+void	ft_list_clear(t_env **lst, void (*del)(void *))
 {
 	t_env	*tmp;
 

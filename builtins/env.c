@@ -14,14 +14,12 @@ void    ft_env(char **arg)
     llist = g_env;
     while (llist)
     {
-        if (llist->value[0] == '=')
+        if (llist->value)
         {
-            printf("node %d --> %s", i, (char *)(llist)->name);
-            printf("%s\n", (char *)(llist)->value);
+            printf("%s", (char *)(llist)->name);
+            printf("=%s\n", (char *)(llist)->value);
             i++;
         }
         llist = (llist)->next;
     }
-    printf("node %d --> %s\n", i, (char *)(llist));
-    printf("------------\n\n");
 }
