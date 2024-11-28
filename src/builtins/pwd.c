@@ -1,6 +1,6 @@
-#include "../builtins.h"
+#include "../../include/builtins.h"
 
-void	re_pwd(char **args)
+void	ft_pwd(char **args)
 {
 	char	*pwd;
 

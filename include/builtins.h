@@ -6,7 +6,7 @@
 /*   By: zadriouc@student.1337.ma <zadriouc>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 01:47:29 by msennane          #+#    #+#             */
-/*   Updated: 2024/11/28 02:55:07 by zadriouc@st      ###   ########.fr       */
+/*   Updated: 2024/11/28 15:07:17 by zadriouc@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,14 @@ typedef struct s_env_var
 	struct s_env_var	*next;
 }						t_env_var;
 
-
-
-void    ft_print_list(t_env_var**list);
-int     list_is_empty(t_env_var**list);
-
-//		builitins
-void    ft_env(char **arg);
-void    ft_unset(char **arg);
-void    ft_export(char **arg);
+//		builtins
+void    ft_env(t_env_var *env_vars);
+void	ft_export(t_env_var **env_vars, char **args);
+void	ft_unset(t_env_var **env_vars, char **args);
+void	ft_pwd(char **args);
+void	ft_cd(t_env_var **env_vars, char **args);
+void    ft_echo(int ac, char **av);
+void 	ft_exit(int ac, char **av);
 
 
 #endif

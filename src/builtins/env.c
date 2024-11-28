@@ -2,14 +2,11 @@
 
 void    ft_env(t_env_var *env_vars)
 {
-    // (void)arg;
-    // ft_print_list(&g_env);
-
     int i;
     t_env_var *llist;
 
     i = 0;
-    if (list_is_empty(&env_vars))
+    if (!env_vars)
         return ;
     llist = env_vars;
     while (llist)
