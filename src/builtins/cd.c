@@ -1,4 +1,4 @@
-#include "../builtins.h"
+#include "../../include/builtins.h"
 
 static void ft_puterror(char *arg)
 {
@@ -23,67 +23,37 @@ void ft_puterror3(char *arg, char *arg2)
     ft_putstr_fd("\n", 2);
 }
 
-void	set_oldpwd(void)
+void	set_env_var(const char *key, t_env_var *env_vars)
 {
-    t_env   *trav;
-	char	*cwd;
+	char		*cwd;
+	t_env_var 	*node;
 
 	cwd = getcwd(NULL, 0);
 	if (!cwd)
 		return ;
-    trav = g_env;
-	while (trav)
-	{
-		if (!strncmp("OLDPWD", trav->name, 6))
-		{
-			free(trav->value);
-            trav->value = strdup(cwd);
-		}
-		trav = trav->next;
-	}
-	free(cwd);
+	node = create_env_var(ft_strdup(key), cwd);
+	update_env_var(env_vars, node);
 }
 
-void	set_pwd(void)
+int	check_home(t_env_var *env_vars)
 {
-    t_env   *trav;
-	char	*cwd;
+    t_env_var   *tmp;
 
-	cwd = getcwd(NULL, 0);
-	if (!cwd)
-		return ;
-    trav = g_env;
-	while (trav)
+    tmp = env_vars;
+	while (tmp)
 	{
-		if (!strncmp("PWD", trav->name, 6))
-		{
-			free(trav->value);
-            trav->value = strdup(cwd);
-		}
-		trav = trav->next;
-	}
-	free(cwd);
-}
-
-int	check_home(void)
-{
-    t_env   *trav;
-
-    trav = g_env;
-	while (trav)
-	{
-		if (!strncmp("HOME", trav->name, 4))
+		if (!strncmp("HOME", tmp->key, 4))
 				return (1);
-		trav = trav->next;
+		tmp = tmp->next;
 	}
 	return (0);
 }
 
-void	ft_chdir(char *path)
+void	ft_chdir(t_env_var *env_vars, char *path)
 {
 	int	i;
 
-	set_oldpwd();
+	set_env_var("OLDPWD", env_vars);
 	i = chdir(path);
 	if (i)
 	{
@@ -91,57 +61,56 @@ void	ft_chdir(char *path)
 		return ;
 	}
 	printf("%s\n", path);
-	set_pwd();
+	set_pwd("PWD", env_vars);
 	free(path);
 }
 
-void	cd_oldpwd(void)
+void	cd_oldpwd(t_env_var *env_vars)
 {
 	char	*path;
 
-    path = ft_list_get_value(g_env, "OLDPWD");
+    path = get_env_value("OLDPWD", env_vars);
 	if (!path)
         ft_puterror("OLDPWD");
 	else
-		ft_chdir(path);
+		ft_chdir(env_vars, path);
 }
 
-void	cd_home(void)
+void	cd_home(t_env_var *env_vars)
 {
 	char	*path;
 	int		i;
 
-	if (!check_home())
+	if (!check_home(env_vars))
         ft_puterror("HOME");
 	else
 	{
-		set_oldpwd();
-        path = ft_list_get_value(g_env, "HOME");
-		// path++; 									fix the issue of the missing '=' in value node 
+		set_env_var("OLDPWD", env_vars);
+        path = get_env_value("HOME", *env_vars);
 		i = chdir(path);
 		if (i)
 		{
             ft_puterror(path);
 			return ;
 		}
-		set_pwd();
+		set_env_var("PWD", env_vars);
 		free(path);
 	}
 }
 
-void	ft_cd(char **args)
+void	ft_cd(t_env_var **env_vars, char **args)
 {
 	char	*cwd;
 	int		i;
 
 	cwd = getcwd(NULL, 0);
 	if (!args[1])
-		cd_home();
+		cd_home(*env_vars);
 	else if (!strcmp(args[1], "-"))
-		cd_oldpwd();
+		cd_oldpwd(*env_vars);
 	else if (strcmp(args[1], "."))
 	{
-		set_oldpwd();
+		set_env_var("OLDPWD", *env_vars);
 		i = chdir(args[1]);
 		if (i == -1)
 		{
@@ -149,7 +118,7 @@ void	ft_cd(char **args)
 			free(cwd);
 			return ;
 		}
-		set_pwd();
+		set_env_var("PWD", *env_vars);
 	}
 	else if (!cwd)
 		ft_putstr_fd("cd: error retrieving current directory: getcwd:\

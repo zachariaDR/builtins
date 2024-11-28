@@ -1,4 +1,4 @@
-#include "../builtins.h"
+#include "../../include/builtins.h"
 
 static void ft_puterror(char *arg)
 {
@@ -27,17 +27,20 @@ int	validate(char *str)
 	return (1);
 }
 
-void	ft_unset(char **args)
+void	ft_unset(t_env_var **env_vars, char **args)
 {
 	int	i;
-
+	t_env_var *node;
 	i = 1;
 	while (args[i])
 	{
 		if (!validate(args[i]))
             ft_puterror(args[i]);
 		else
-            ft_list_del(&g_env, args[i], free);
+		{
+			node = creat_env_var(ft_strdup(args[i]), NULL);
+			remove_env_var(env_vars, node);
+		}
 		i++;
 	}
 }

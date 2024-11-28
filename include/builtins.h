@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zadriouc@student.1337.ma <zadriouc>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/14 16:16:59 by zadriouc          #+#    #+#             */
-/*   Updated: 2024/10/21 18:32:31 by zadriouc@st      ###   ########.fr       */
+/*   Created: 2024/11/02 01:47:29 by msennane          #+#    #+#             */
+/*   Updated: 2024/11/28 02:55:07 by zadriouc@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,21 @@
 # include <sys/errno.h>
 # include <limits.h>
 
-# include "linked_list/ft_a_list.h"
 
 # define PATH_MAXO 4096
 
-extern t_env	*g_env;
+typedef struct s_env_var
+{
+	char				*key;
+	char				*value;
+	struct s_env_var	*next;
+}						t_env_var;
 
 
-void    ft_putstr_fd(const char *str, int fd);
-int		ft_atoi(const char *str);
-int		ft_isalnum(int i);
-int		ft_isalpha(int i);
-int		ft_isdigit(int i);
-void	ft_putendl_fd(char *s, int fd);
-// char	*ft_strchr(const char *s, int i);
-char	*ft_strjoin(char *s1, char *s2);
-// int		ft_strlen(const char *str);
-// int		strncmp(const char *s1, char *s2, size_t n);
-void    ft_putstr_fd(const char *str, int fd);
-char	*ft_strcjoin(char *s1, char c);
 
+void    ft_print_list(t_env_var**list);
+int     list_is_empty(t_env_var**list);
 
-int     ft_matlen(char **mat);
-t_env	*ft_fill_env(char **env);
-void	ft_init_data(int ac, char **av, char **env);
-char    *get_env_name(char *env_var);
-char    *get_env_value(char *env_var);
 //		builitins
 void    ft_env(char **arg);
 void    ft_unset(char **arg);

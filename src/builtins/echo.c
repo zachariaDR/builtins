@@ -16,7 +16,7 @@ int     is_n_chain_option(char *str)
     return (1);
 }
 
-void    echo(int ac, char **av)
+void    ft_echo(int ac, char **av)
 {
     int no_nl;
     int i;
