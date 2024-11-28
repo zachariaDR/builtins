@@ -1,4 +1,4 @@
-#include "../../include/builtins.h"
+#include "../../include/minishell.h"
 
 static void ft_puterror(char *arg)
 {
@@ -39,8 +39,3 @@ void ft_exit(int ac, char **av)
         exit(EXIT_FAILURE);
     }
 }
-
-// int main(int ac, char **av)
-// {
-//     ft_exit(ac, av);
-// }

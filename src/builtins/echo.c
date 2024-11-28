@@ -1,4 +1,4 @@
-#include "../../include/builtins.h"
+#include "../../include/minishell.h"
 
 int     is_n_chain_option(char *str)
 {
@@ -43,8 +43,3 @@ void    ft_echo(int ac, char **av)
     exit(EXIT_SUCCESS);
 }
 
-// int main(int ac, char **av)
-// {
-//     echo (ac, av);
-//     return (0);
-// }
