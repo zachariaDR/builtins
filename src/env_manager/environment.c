@@ -6,7 +6,7 @@
 /*   By: zadriouc@student.1337.ma <zadriouc>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 01:51:48 by msennane          #+#    #+#             */
-/*   Updated: 2024/11/28 02:03:03 by zadriouc@st      ###   ########.fr       */
+/*   Updated: 2024/11/28 14:34:38 by zadriouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	remove_env_var(t_env_var **env_var_list, t_env_var *del_nod)
 	t_env_var	*curr;
 	t_env_var	*prev;
 
-	if (!*env_var_list)
+	if (*env_var_list == NULL)
 	{
 		free_env_node(del_nod);
 		return ;
