@@ -17,12 +17,12 @@ static int valid_char(char c)
 
 int	validate(char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (valid_char(str[i]))
 		i++;
-	if (i != strlen(str))
+	if (i != ft_strlen(str))
 		return (0);
 	return (1);
 }
@@ -31,6 +31,7 @@ void	ft_unset(t_env_var **env_vars, char **args)
 {
 	int	i;
 	t_env_var *node;
+	
 	i = 1;
 	while (args[i])
 	{
@@ -38,7 +39,7 @@ void	ft_unset(t_env_var **env_vars, char **args)
             ft_puterror(args[i]);
 		else
 		{
-			node = creat_env_var(ft_strdup(args[i]), NULL);
+			node = create_env_var(ft_strdup(args[i]), NULL);
 			remove_env_var(env_vars, node);
 		}
 		i++;

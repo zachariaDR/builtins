@@ -2,21 +2,21 @@
 
 static void ft_puterror(char *arg)
 {
-    ft_putstr_fd("bash: cd: '", 2);
+    ft_putstr_fd("minishell: cd: '", 2);
     ft_putstr_fd(arg, 2);
     ft_putstr_fd("': No such file or directory\n", 2);
 }
 
 void ft_puterror2(char *arg)
 {
-    ft_putstr_fd("bash: cd: ", 2);
+    ft_putstr_fd("minishell: cd: ", 2);
     ft_putstr_fd(arg, 2);
     ft_putstr_fd(": not set\n", 2);
 }
 
 void ft_puterror3(char *arg, char *arg2)
 {
-    ft_putstr_fd("bash: cd: ", 2);
+    ft_putstr_fd("minishell: cd: ", 2);
     ft_putstr_fd(arg, 2);
     ft_putstr_fd(": ", 2);
     ft_putstr_fd(arg2, 2);
@@ -61,15 +61,19 @@ void	ft_chdir(t_env_var *env_vars, char *path)
 		return ;
 	}
 	printf("%s\n", path);
-	set_pwd("PWD", env_vars);
+	set_env_var("PWD", env_vars);
 	free(path);
 }
 
 void	cd_oldpwd(t_env_var *env_vars)
 {
 	char	*path;
+	char	*oldpwd;
 
-    path = get_env_value("OLDPWD", env_vars);
+	path = NULL;
+    oldpwd = get_env_value("OLDPWD", env_vars);
+	if (oldpwd)
+		path = ft_strdup(oldpwd);
 	if (!path)
         ft_puterror("OLDPWD");
 	else
@@ -79,14 +83,19 @@ void	cd_oldpwd(t_env_var *env_vars)
 void	cd_home(t_env_var *env_vars)
 {
 	char	*path;
+	char	*home;
 	int		i;
 
+	path = NULL;
 	if (!check_home(env_vars))
         ft_puterror("HOME");
 	else
 	{
 		set_env_var("OLDPWD", env_vars);
-        path = get_env_value("HOME", *env_vars);
+		home = get_env_value("HOME", env_vars);
+		if (home)
+        	path = ft_strdup(home);
+		printf("path = %s \n", path);
 		i = chdir(path);
 		if (i)
 		{
@@ -105,9 +114,13 @@ void	ft_cd(t_env_var **env_vars, char **args)
 
 	cwd = getcwd(NULL, 0);
 	if (!args[1])
+	{
 		cd_home(*env_vars);
+	}
 	else if (!strcmp(args[1], "-"))
+	{
 		cd_oldpwd(*env_vars);
+	}
 	else if (strcmp(args[1], "."))
 	{
 		set_env_var("OLDPWD", *env_vars);

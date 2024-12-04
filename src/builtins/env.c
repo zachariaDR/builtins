@@ -13,8 +13,8 @@ void    ft_env(t_env_var *env_vars)
     {
         if (llist->value)
         {
-            printf("%s", (char *)(llist)->key);
-            printf("=%s\n", (char *)(llist)->value);
+            printf("%s", (llist)->key);
+            printf("=%s\n", (llist)->value);
             i++;
         }
         llist = (llist)->next;

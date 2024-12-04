@@ -7,7 +7,7 @@ static void ft_puterror(char *arg)
     ft_putstr_fd("': not a valid identifier\n", 2);
 }
 
-int is_numeric(char c)
+int is_c_numeric(char c)
 {
     return (c >= '0' && c <= '9');
 }
@@ -34,7 +34,7 @@ int	valid_ident(char *str, char *op)
 		}
 		i++;
 	}
-	if (i == 0 || is_numeric(str[0]) || (str[i] == '+' && str[i+1] != '='))
+	if (i == 0 || is_c_numeric(str[0]) || (str[i] == '+' && str[i+1] != '='))
 	{
 	    ft_puterror(str);
 		return (0);
@@ -73,7 +73,6 @@ void	export_var(t_env_var **env_vars, char **args)
 	int	    	i;
 	char		valid;
 	char    	*name;
-	char		*concat;
 	t_env_var	*updated_node;
 
 	i = 1;
@@ -84,19 +83,19 @@ void	export_var(t_env_var **env_vars, char **args)
 			name = var_exist(*env_vars, args[i]);
 			if (!name)
 			{
-				export_and_push(env_vars, args[i]); // <-- done!
+				extract_and_push(env_vars, args[i]); // <-- done!
 			}
 			else
 			{
 				if (strchr(args[i], '=') && valid == '=')
 				{
 					updated_node = create_env_var(name, strdup(strchr(args[i], '=') + 1)); // <-- done!
-					update_env_var(env_vars, updated_node);  // <-- done!
+					update_env_var(*env_vars, updated_node);  // <-- done!
 				}
 				else if (strchr(args[i], '=') && valid == '+')
 				{
 					updated_node = create_env_var(name, ft_strjoin(get_env_value(name, *env_vars), strchr(args[i], '=') + 1)); // <-- done!
-					update_env_var(env_vars, updated_node);  // <-- done!
+					update_env_var(*env_vars, updated_node);  // <-- done!
 				}
 			}
 		}

@@ -1,12 +1,20 @@
 #include "../../include/minishell.h"
 
-void	ft_pwd(char **args)
+void	ft_pwd(int *exit_status, char *argv)
 {
 	char	*pwd;
 
-	(void) args;
 	pwd = getcwd(NULL, 0);
 	if (pwd)
+	{
 		printf("%s\n", pwd);
-	free(pwd);
+		free(pwd);
+		*exit_status = 0;
+	}
+	else
+	{
+		print_exec_error(argv, "Unable to get current directory");
+		*exit_status = 1;
+	}
 }
+

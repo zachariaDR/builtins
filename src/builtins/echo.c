@@ -16,30 +16,26 @@ int     is_n_chain_option(char *str)
     return (1);
 }
 
-void    ft_echo(int ac, char **av)
+void    ft_echo(char **av)
 {
     int no_nl;
     int i;
 
     no_nl = 0;
-    if (ac > 1)
+    i = 1;
+    while (is_n_chain_option(av[i]))
     {
-        i = 1;
-        while (is_n_chain_option(av[i]))
-        {
-            no_nl = 1;
-            i++;
-        }
-        while (av[i])
-        {
-            ft_putstr_fd(av[i], 1);
-            if (i != ac - 1)
-                ft_putstr_fd(" ", 1);
-            i++;
-        }
+        no_nl = 1;
+        i++;
+    }
+    while (av[i])
+    {
+        ft_putstr_fd(av[i], 1);
+        if (av[i+1])
+            ft_putstr_fd(" ", 1);
+        i++;
     }
     if (no_nl == 0)
         write(1, "\n", 1);
     exit(EXIT_SUCCESS);
 }
-
